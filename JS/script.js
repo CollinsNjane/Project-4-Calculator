@@ -25,7 +25,9 @@ class Calculator {
       return;
     }
     //Don't repeat 0
-    if (this.currentOperand === "0" && number !== "."){return;}
+    if (this.currentOperand === "0" && number !== ".") {
+      return;
+    }
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
   //Method that chooses which operation, it assigns a value to previous operand
@@ -89,7 +91,7 @@ class Calculator {
     const current = parseFloat(this.currentOperand);
     //If the current or previous numbers are not numbers, break out of the compute method
     if (isNaN(prev) || isNaN(current)) {
-      return ;
+      return;
     }
     computation = this.noOverflow(
       this.operate(this.operation, prev, current),
@@ -111,7 +113,6 @@ class Calculator {
       this.previousOperandTextElement.innerText = "";
     }
   }
-  
 }
 //DOM variables
 const numberKeys = document.querySelectorAll("[data-number]");
