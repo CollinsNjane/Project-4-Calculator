@@ -63,10 +63,6 @@ class Calculator {
       return number1 / number2;
     }
   }
-  //Method Rounds number to nearest places, default is 10 decimaal places
-  noOverflow(num, places) {
-    return parseFloat(Math.round(num + "e" + places) + "e-" + places);
-  }
   //Operate function that takes in an operator and 2 numbers and calculates the value accordingly
   operate(operator, number1, number2) {
     let num1 = Number(number1);
@@ -79,6 +75,7 @@ class Calculator {
       case "*":
         return this.multiply(num1, num2);
       case "/":
+        //console.log(this.divide(num1, num2));
         return this.divide(num1, num2);
       default:
         return;
@@ -93,11 +90,7 @@ class Calculator {
     if (isNaN(prev) || isNaN(current)) {
       return;
     }
-    computation = this.noOverflow(
-      this.operate(this.operation, prev, current),
-      10
-    );
-
+    computation = parseFloat(this.operate(this.operation, prev, current)).toFixed(2);//Round to 2 decimal places
     //console.log(computation);
     this.currentOperand = computation;
     this.operation = undefined;
