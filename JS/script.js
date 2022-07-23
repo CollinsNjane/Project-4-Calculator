@@ -39,8 +39,12 @@ class Calculator {
     if (isNaN(prev) || isNaN(current)) {
       return;
     }
-    computation = this.operate(this.operation, prev, current);
-    console.log(computation);
+    computation = this.noOverflow(
+      this.operate(this.operation, prev, current),
+      10
+    );
+
+    //console.log(computation);
     this.currentOperand = computation;
     this.operation = undefined;
     this.previousOperand = "";
@@ -50,8 +54,7 @@ class Calculator {
     //display operator on previous operand
     if (this.operation != null) {
       this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
-    }
-    else {
+    } else {
       this.previousOperandTextElement.innerText = "";
     }
   }
@@ -65,7 +68,14 @@ class Calculator {
     return number1 * number2;
   }
   divide(number1, number2) {
-    return number1 / number2;
+    if (number2 === 0) {
+      return "Error";
+    } else {
+      return number1 / number2;
+    }
+  }
+  noOverflow(num, places) {
+    return parseFloat(Math.round(num + "e" + places) + "e-" + places);
   }
   operate(operator, number1, number2) {
     let num1 = Number(number1);
@@ -84,7 +94,6 @@ class Calculator {
     }
   }
 }
-
 const numberKeys = document.querySelectorAll("[data-number]");
 const operationKeys = document.querySelectorAll("[data-operator]");
 const equalButton = document.querySelector("[data-equals]");
@@ -125,86 +134,3 @@ deleteButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
 });
-
-///////////
-/*
-let storedNumber = "";
-let clickedOperator = "";
-let firstNumber = "";
-let resultVariable = "";
-result.textContent = 0;
-
-numberKeys.forEach((number) => {
-  number.addEventListener("click", function () {
-    storedNumber += number.value;
-    result.textContent += storedNumber;
-    displayResult();
-  });
-});
-
-operationKeys.forEach((operator) => {
-  operator.addEventListener("click", function () {
-    if (firstNumber && storedNumber) {
-      displayResult();
-    }
-    // save the first number
-    firstNumber = storedNumber;
-
-    // get the operator that was clicked
-    clickedOperator = operator.textContent;
-    equation.textContent = storedNumber + clickedOperator;
-    storedNumber = '';
-
-    console.log('FirstNumber' + firstNumber + 'Stored' + storedNumber)
-    console.log(clickedOperator);
-
-  })
-});
-equalsKey.addEventListener('click', function() {
-  displayResult();
-});
-function displayResult() {
-  result = operate(parseFloat(firstNumber), parseFloat(storedNumber), clickedOperator)
-  // update content of current operation with result and previous operand with the calculation, make storedNumber = result
-  result.textContent = result;
-  equation.textContent = firstNumber + ' ' + clickedOperator + ' ' + storedNumber;
-  storedNumber = result;
-  console.log('FirstNumber' + firstNumber + 'Stored' + storedNumber);
-}
-
-function operation() {
-  let buttonText = this.innerText;
-  if (buttonText === "AC") {
-    equation.innerText = "";
-    result.innerText = "0";
-    return;
-  }
-  if (buttonText === "DEL") {
-    equation.textContent = equation.textContent.substring(
-      0,
-      equation.textContent.length - 1
-    );
-    return;
-  }
-  if (buttonText === "=") {
-    result.innerText = eval(equation.innerText);
-  } else {
-    equation.textContent += buttonText;
-    return;
-  }
-
-  //
-  if (operator == "add") {
-    add(number1, number2);
-  }
-  if (operator == "subtract") {
-    subtract(number1, number2);
-  }
-  if (operator == "multiply") {
-    multiply(number1, number2);
-  }
-  if (operator == "divide") {
-    divide(number1, number2);
-  }
-}
-*/
