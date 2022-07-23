@@ -90,6 +90,7 @@ class Calculator {
     if (isNaN(prev) || isNaN(current)) {
       return;
     }
+    //Has a bug that isNaN is produced if divided by 0
     computation = parseFloat(
       this.operate(this.operation, prev, current)
     ).toFixed(2); //Round to 2 decimal places
