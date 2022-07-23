@@ -1,3 +1,4 @@
+/*---------- Fonts ---------- */
 @font-face {
   font-family: "Comic Neue";
   src: url(../Fonts/Comic_Neue/ComicNeue-Regular.ttf) format("truetype");
@@ -64,9 +65,6 @@ header > h1{
   transition: 0.3s;
   cursor: pointer;
 }
-.button:hover {
-  background-color: #cdcdcd;
-}
 #ac{
   grid-column: span 2;
 }
@@ -77,11 +75,16 @@ header > h1{
   border-bottom:2px solid #1e392a;
   border-left: 2px solid #1e392a;
 }
-#operator:hover {
+/*---------- When operator button is clicked color remains visible ----------*/
+#operator:focus {
   background-color: #ff533d; 
   color: #f5f5f5;
 }
-#operator:focus {
+/*---------- When user hovers over a button color changes ----------*/
+.button:hover {
+  background-color: #cdcdcd;
+}
+#operator:hover {
   background-color: #ff533d; 
   color: #f5f5f5;
 }
