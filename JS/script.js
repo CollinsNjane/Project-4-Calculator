@@ -20,6 +20,7 @@ class Calculator {
   }
   //Method to add number before operation is done
   appendNumber(number) {
+    //Don't repeat decimal points
     if (number === "." && this.currentOperand.includes(".")) {
       return;
     }
@@ -52,7 +53,7 @@ class Calculator {
   }
   //Method to divide numbers
   divide(number1, number2) {
-    if (number2 === 0) {
+    if (number2 == 0) {
       return "Error";
     } else {
       return number1 / number2;
@@ -84,9 +85,9 @@ class Calculator {
     let computation;
     const prev = parseFloat(this.previousOperand);
     const current = parseFloat(this.currentOperand);
-    //If the current and previous numbers are not numbers, break out of the compute method
+    //If the current or previous numbers are not numbers, break out of the compute method
     if (isNaN(prev) || isNaN(current)) {
-      return;
+      return ;
     }
     computation = this.noOverflow(
       this.operate(this.operation, prev, current),
