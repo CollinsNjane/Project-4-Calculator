@@ -91,9 +91,7 @@ class Calculator {
       return;
     }
     //Has a bug that isNaN is produced if divided by 0
-    computation = parseFloat(
-      this.operate(this.operation, prev, current)
-    ).toFixed(2); //Round to 2 decimal places
+    computation = this.operate(this.operation, prev, current); //Round to 2 decimal places
     //console.log(computation);
     this.currentOperand = computation;
     this.operation = undefined;
