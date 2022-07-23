@@ -90,7 +90,9 @@ class Calculator {
     if (isNaN(prev) || isNaN(current)) {
       return;
     }
-    computation = parseFloat(this.operate(this.operation, prev, current)).toFixed(2);//Round to 2 decimal places
+    computation = parseFloat(
+      this.operate(this.operation, prev, current)
+    ).toFixed(2); //Round to 2 decimal places
     //console.log(computation);
     this.currentOperand = computation;
     this.operation = undefined;
