@@ -24,6 +24,8 @@ class Calculator {
     if (number === "." && this.currentOperand.includes(".")) {
       return;
     }
+    //Don't repeat 0
+    if (this.currentOperand === "0" && number !== "."){return;}
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
   //Method that chooses which operation, it assigns a value to previous operand
