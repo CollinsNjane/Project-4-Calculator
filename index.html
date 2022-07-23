@@ -13,34 +13,30 @@
   </header>
   <div class="calculator">
     <div class="display">
-      <div class="equation">
-        2+2
+      <div data-previous-operand class="previous-operand">
       </div>
-      <div class="result">
-        4
+      <div data-current-operand class="current-operand">
       </div>
     </div>
     <div class="input">
-      <button class="button" id="ac">AC</button>
-      <button class="button">(</button>
-      <button class="button">)</button>
-      <button class="button" id="operator">+</button>
-      <button class="button">7</button>
-      <button class="button">8</button>
-      <button class="button">9</button>
-      <button class="button" id="operator">-</button>
-      <button class="button">4</button>
-      <button class="button">5</button>
-      <button class="button">6</button>
-      <button class="button" id="operator">*</button>
-      <button class="button">1</button>
-      <button class="button">2</button>
-      <button class="button">3</button>
-      <button class="button" id="operator">÷</button>
-      <button class="button" id="delete">DEL</button>
-      <button class="button">0</button>
-      <button class="button">.</button>
-      <button class="button"id="equals">=</button>
+      <button data-clear class="button" id="ac">AC</button>
+      <button data-operator class="button" id="operator">+</button>
+      <button data-number class="button">7</button>
+      <button data-number class="button">8</button>
+      <button data-number class="button">9</button>
+      <button data-operator class="button" id="operator">-</button>
+      <button data-number class="button">4</button>
+      <button data-number class="button">5</button>
+      <button data-number class="button">6</button>
+      <button data-operator class="button" id="operator">*</button>
+      <button data-number class="button">1</button>
+      <button data-number class="button">2</button>
+      <button data-number class="button">3</button>
+      <button data-operator class="button" id="operator">/</button>
+      <button data-delete class="button" id="delete">DEL</button>
+      <button data-number class="button">0</button>
+      <button data-number class="button">.</button>
+      <button data-equals class="button"id="equals">=</button>
     </div>
   </div>
   <script src="JS/script.js"></script>
